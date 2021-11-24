@@ -21,14 +21,18 @@ static SemaphoreHandle_t disp_mutex;
  */
 static void example_task(void *p)
 {
-	(void)p;
-	while (1) {
-		if (xSemaphoreTake(disp_mutex, ~0)) {
-			/* add your code */
-			xSemaphoreGive(disp_mutex);
-		}
-		os_sleep(500);
-	}
+    (void)p;
+
+    while (1)
+    {
+        if (xSemaphoreTake(disp_mutex, ~0))
+        {
+            /* add your code */
+            xSemaphoreGive(disp_mutex);
+        }
+
+        os_sleep(500);
+    }
 }
 
 /*
@@ -36,23 +40,28 @@ static void example_task(void *p)
  */
 void FREERTOS_V1000_0_example(void)
 {
-	disp_mutex = xSemaphoreCreateMutex();
+    disp_mutex = xSemaphoreCreateMutex();
 
-	if (disp_mutex == NULL) {
-		while (1) {
-			;
-		}
-	}
+    if (disp_mutex == NULL)
+    {
+        while (1)
+        {
+            ;
+        }
+    }
 
-	if (xTaskCreate(
-	        example_task, "Example", TASK_EXAMPLE_STACK_SIZE, NULL, TASK_EXAMPLE_STACK_PRIORITY, xCreatedExampleTask)
-	    != pdPASS) {
-		while (1) {
-			;
-		}
-	}
+    if (xTaskCreate(
+                example_task, "Example", TASK_EXAMPLE_STACK_SIZE, NULL,
+                TASK_EXAMPLE_STACK_PRIORITY, xCreatedExampleTask)
+            != pdPASS)
+    {
+        while (1)
+        {
+            ;
+        }
+    }
 
-	vTaskStartScheduler();
+    vTaskStartScheduler();
 
-	return;
+    return;
 }

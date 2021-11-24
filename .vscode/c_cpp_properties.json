@@ -3,7 +3,9 @@
         {
             "name": "ARM GCC",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/hal/include",
+                "${workspaceFolder}/src"
             ],
             "defines": [
                 "__SAMD21G17D__"

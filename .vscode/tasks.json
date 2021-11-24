@@ -40,6 +40,15 @@
                     "${workspaceFolder}/build"
                 ]
             }
+        },
+        {
+            "type": "shell",
+            "label": "style",
+            "command": "astyle --options=astylerc src/*.c src/*.h",
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
         }
     ]
 }

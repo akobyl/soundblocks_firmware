@@ -54,6 +54,7 @@ set(SRC_FILES
         thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.c
         thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM0/port.c
         thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.c
+        src/button_driver.c
         )
 
 # Build the executable based on the source files
